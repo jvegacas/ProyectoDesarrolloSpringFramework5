@@ -1,5 +1,7 @@
 package com.udemy.springframework5.proyectoInicial.app.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.udemy.springframework5.proyectoInicial.app.models.Usuario;
 
 @Controller
 @RequestMapping("/app")
@@ -34,6 +38,36 @@ public class IndexController {
 	public String indexMap (Map<String, Object> mp) {
 		mp.put("titulo", "SpringFrameWork con Map");
 		return "index";
+	}
+	
+	@GetMapping(value = "/perfil")
+	public String perfil(Model model) {
+		Usuario usuario = new Usuario();
+		usuario.setNombre("Javi");
+		usuario.setApellido("Vega");
+		model.addAttribute("usuario",usuario);
+		model.addAttribute("titulo", "Usuario: ".concat(usuario.getNombre()).concat(" ").concat(usuario.getApellido()));
+		
+		List<Usuario> usuarios = new ArrayList<>();
+		usuarios.add(new Usuario("aa","bb"));
+		usuarios.add(new Usuario("cc","dd"));
+		usuarios.add(new Usuario("ee","ff"));
+		
+		model.addAttribute("usuarios",usuarios);
+		return "perfil";
+		
+	}
+	
+	@GetMapping(value = "/perfiles")
+	public String listarPerfiles(Model model) {
+		List<Usuario> usuarios = new ArrayList<>();
+		usuarios.add(new Usuario("aa","bb"));
+		usuarios.add(new Usuario("cc","dd"));
+		usuarios.add(new Usuario("ee","ff"));
+		
+		model.addAttribute("usuarios",usuarios);
+		
+		return "perfil";
 	}
 
 }
