@@ -8,7 +8,19 @@
 	<h1 th:text=${titulo}></h1>
 	<h2>Yeah!!</h2>
 	<h3 th:text=${titulo}></h3>
+	<!--  
+	<br>
+	<table th:if="${usuariosglobales.size()>0}">
+	<tbody>
+	<tr th:each="usuario:${usuariosglobales}">
+	<td th:text="${usuario.nombre}">
+	<td th:text="${usuario.apellido}">
+	</tbody>
+	</table>
+	<br>
+	-->
 	
+	<span th:text="${frase}"></span>
 	
 	
 </body>

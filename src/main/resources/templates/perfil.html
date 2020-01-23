@@ -16,6 +16,16 @@
 	<td th:text="${usuario.apellido}">
 	</tbody>
 	</table>
+	<br>
+	<table th:if="${usuariosglobales.size()>0}">
+	<tbody>
+	<tr th:each="usuario:${usuariosglobales}">
+	<td th:text="${usuario.nombre}">
+	<td th:text="${usuario.apellido}">
+	</tbody>
+	</table>
+	<br>
+	
 	
 </body>
 </html>
